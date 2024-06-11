@@ -3,8 +3,8 @@ import Navbar from "./components/Navbar";
 import Hello from "./components/Hello";
 import Alert from "./components/Alert";
 import React, { useState } from "react";
-//import About from "./components/About";
-//import { createBrowserRouter,RouterProvider} from "react-router-dom";
+import About from "./components/About";
+import { createBrowserRouter,RouterProvider} from "react-router-dom";
 
 document.body.style.backgroundColor = "#65666C";
 
@@ -22,16 +22,16 @@ function App() {
       showalert("Dart mode is been activated", "success");
     }
   };
-  /*const router=createBrowserRouter([
+  const router=createBrowserRouter([
     {
-      path:"/",
-      element:<><Navbar mode={mode} toggleMode={toggleMode} /><Hello mode={mode}/></>
+      path:"/localrepo",
+      element:<><Navbar mode={mode} toggleMode={toggleMode} /><Alert alert={alert}/><Hello mode={mode}/></>
     },
     {
       path:"/about",
       element:<><Navbar mode={mode} toggleMode={toggleMode} /><About/></>
     }
-  ])*/
+  ])
 
   
   const showalert = (message, type) => {
@@ -43,9 +43,7 @@ function App() {
 
   return (
     <>
-    <Navbar mode={mode} toggleMode={toggleMode} />
-    <Alert alert={alert}/>
-    <Hello mode={mode}/>
+    <RouterProvider router={router}/>
     </>
   );
 }

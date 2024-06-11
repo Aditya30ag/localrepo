@@ -1,17 +1,17 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   
   return (
     <nav className={`navbar bg-${props.mode} navbar-${props.mode}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/localrepo">
           NavBar
-        </a>
-        <a className="navbar-brand" href="/">
+        </Link>
+        <Link className="navbar-brand" to="/about">
           About
-        </a>
+        </Link>
         <form className="d-flex" role="search">
           <input
             className="form-control me-2"
