@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Hello from "./components/Hello";
+import Alert from "./components/Alert";
+import React, { useState } from "react";
+//import About from "./components/About";
+//import { createBrowserRouter,RouterProvider} from "react-router-dom";
+
+document.body.style.backgroundColor = "#65666C";
 
 function App() {
+  const [mode, setmode] = useState("dark");
+  const [alert, setalert] = useState(null);
+  const toggleMode = () => {
+    if (mode === "dark") {
+      setmode("light");
+      document.body.style.backgroundColor = "white";
+      showalert("Light mode is been activated", "success");
+    } else {
+      setmode("dark");
+      document.body.style.backgroundColor = "grey";
+      showalert("Dart mode is been activated", "success");
+    }
+  };
+  /*const router=createBrowserRouter([
+    {
+      path:"/",
+      element:<><Navbar mode={mode} toggleMode={toggleMode} /><Hello mode={mode}/></>
+    },
+    {
+      path:"/about",
+      element:<><Navbar mode={mode} toggleMode={toggleMode} /><About/></>
+    }
+  ])*/
+
+  
+  const showalert = (message, type) => {
+    setalert({
+      msg: message,
+      type: type,
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar mode={mode} toggleMode={toggleMode} />
+    <Alert alert={alert}/>
+    <Hello mode={mode}/>
+    </>
   );
 }
 
